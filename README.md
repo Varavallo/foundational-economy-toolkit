@@ -39,24 +39,6 @@ The framework was developed and tested on **372 marginal municipalities in the P
 
 ---
 
-## Repository Structure
-
-```
-Foundational-Economy-Toolkit/
-│
-├── README.md
-│
-├── data/
-│   └── sample_municipalities.csv        # Anonymised sample (2 municipalities)
-│
-├── collection/
-│   └── google_places_collector.py       # Google Maps Places API data collector
-│
-└── figures/
-    ├── inner_areas_classification_maps_rev2.svg
-    └── region_inner_areas_classification_maps.svg
-```
-
 ---
 
 ## Data Collection
@@ -223,6 +205,23 @@ Google Maps POI counts are validated against the official ISTAT ASIA register of
 ✉ r.diclemente@northeastern.ac.uk
 
 ---
+## Repository Structure
+
+```
+Foundational-Economy-Toolkit/
+│
+├── README.md
+│
+├── data/
+│   └── sample_municipalities.csv        # Anonymised sample (2 municipalities)
+│
+├── collection/
+│   └── google_places_collector.py       # Google Maps Places API data collector
+│
+└── figures/
+    ├── inner_areas_classification_maps_rev2.svg
+    └── region_inner_areas_classification_maps.svg
+```
 
 ## License
 
