@@ -1,47 +1,72 @@
-# Foundational Economy Index (FEI) — Marginal Municipalities, Piedmont
+# Foundational Economy Toolkit
 
-A data-driven framework to map and assess foundational service provision in marginal territories, using Google Maps Places API as a dynamic proxy for physical infrastructure.
-
-> Based on: *Revitalizing Marginal Areas: A Foundational Economy Approach* (under review, Statistics and Economics for Policymakers Studies)
+[![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
+[![Python](https://img.shields.io/badge/Python-3.8%2B-green?logo=python)](https://www.python.org/)
+[![Google Maps API](https://img.shields.io/badge/Google_Maps-Places_API-4285F4?logo=googlemaps&logoColor=white)](https://developers.google.com/maps/documentation/places/web-service)
+[![GeoPandas](https://img.shields.io/badge/GeoPandas-0.14%2B-blue)](https://geopandas.org/)
+[![PySAL](https://img.shields.io/badge/PySAL-libpysal-orange)](https://pysal.org/)
+[![Status](https://img.shields.io/badge/Paper-Under_Review-yellow)](https://www.mdpi.com/journal/stats)
 
 ---
 
 ## Overview
 
-This repository provides the methodology, sample data, and analytical code to replicate the **Foundational Economy Index (FEI)** for marginal municipalities. The FEI captures the territorial distribution and density of essential services — healthcare, education, food access, transport, civic infrastructure, and more — using geolocated Points of Interest (POIs) collected via the Google Maps Places API.
+This repository provides the methodology, sample data, and analytical code behind the **Foundational Economy Index (FEI)** — a data-driven framework to map and assess the availability of essential services in marginal territories.
 
-The framework was developed and tested on **372 marginal municipalities in the Piedmont region (Italy)**, classified as intermediate, peripheral, or ultra-peripheral under the National Strategy for Inner Areas (SNAI, 2021–2027).
+> **Varavallo, G., Barbera, F., Di Clemente, R. (under review).**
+> *Revitalizing Marginal Areas: A Foundational Economy Approach.*
+> Statistics and Economics for Policymakers Studies (SEPS).
+
+The FEI captures the territorial distribution and density of foundational services — healthcare, education, food access, transport, civic infrastructure, and more — using geolocated Points of Interest (POIs) collected via the **Google Maps Places API** as a dynamic, scalable proxy for physical infrastructure.
+
+The framework was developed and tested on **372 marginal municipalities in the Piedmont region (Italy)**, classified as intermediate, peripheral, or ultra-peripheral under the National Strategy for Inner Areas (SNAI, 2021–2027). The analytical pipeline is designed to be **replicable in any territorial context** where Google Maps API coverage is available.
+
+---
+
+## Maps & Figures
+
+### SNAI Inner Areas Classification — Italy and Piedmont Region
+
+![SNAI Classification — Italy](figures/inner_areas_classification_maps_rev2.svg)
+
+*Italian municipalities by SNAI inner areas classification (2021–2027). Source: SNAI (2021–2027) — elaboration by Varavallo, Barbera & Di Clemente.*
+
+---
+
+![SNAI Classification — Piedmont](figures/region_inner_areas_classification_maps.svg)
+
+*Spatial distribution of the 372 marginal municipalities in the Piedmont region selected for analysis (SNAI classes D, E, F). Source: SNAI (2021–2027), ISTAT (2022) — elaboration by Varavallo, Barbera & Di Clemente.*
 
 ---
 
 ## Repository Structure
 
 ```
-foundational-economy-piedmont/
+Foundational-Economy-Toolkit/
 │
 ├── README.md
 │
 ├── data/
-│   └── sample_municipalities.csv        # Sample of 2 anonymised municipalities
+│   └── sample_municipalities.csv        # Anonymised sample (2 municipalities)
 │
 ├── collection/
-│   └── google_places_collector.py       # Data collection script (Google Maps API)
+│   └── google_places_collector.py       # Google Maps Places API data collector
 │
 ├── analysis/
 │   ├── fei_computation.py               # FEI and FES calculation
-│   ├── spatial_regression.py            # OLS + SLM + SEM + SDM + impacts
+│   ├── spatial_regression.py            # OLS + SLM + SEM + SDM + marginal effects
 │   └── clustering.py                    # Cosine similarity + hierarchical clustering
 │
 └── figures/
-    ├── fei_distribution.svg             # FEI score distribution
-    └── moran_scatter.svg                # Moran's I scatter plot
+    ├── inner_areas_classification_maps_rev2.svg
+    └── region_inner_areas_classification_maps.svg
 ```
 
 ---
 
 ## Data Collection
 
-POIs are collected using the **Google Maps Places API (Nearby Search)**. For each municipality, the script queries all available service types within a configurable radius (default: 5 km) around the municipal centroid.
+POIs are collected using the **Google Maps Places API (Nearby Search)**. For each municipality, the script queries all available service types within a configurable radius around the municipal centroid, deduplicates results by `place_id`, and outputs a flat Excel file.
 
 ### Input format
 
@@ -51,57 +76,34 @@ Your input CSV must contain at least:
 |--------|-------------|
 | `municipality` | Municipality name |
 | `region` | Region name (e.g. `Piedmont`) |
-| `latitude` | Centroid latitude (WGS84) |
-| `longitude` | Centroid longitude (WGS84) |
-| `snai_class` | SNAI classification (D, E, or F) |
+| `latitude` | Centroid latitude — WGS84 |
+| `longitude` | Centroid longitude — WGS84 |
+| `snai_class` | SNAI classification (`D`, `E`, or `F`) |
 
 ### Running the collector
 
 ```python
 # collection/google_places_collector.py
 
-API_KEY    = "YOUR_GOOGLE_API_KEY"   # insert your key here
-INPUT_CSV  = "data/your_municipalities.csv"
-OUTPUT_XLS = "data/your_output.xlsx"
-RADIUS_M   = 5000                    # search radius in metres
-DELAY_SEC  = 0.2                     # pause between requests
+API_KEY   = "YOUR_GOOGLE_API_KEY"         # insert your Google Maps API key
+INPUT_CSV = "data/your_municipalities.csv"
+RADIUS_M  = 5000                          # search radius in metres (default: 5 km)
 ```
 
 ```bash
 python collection/google_places_collector.py
 ```
 
-The script iterates over all Google Places categories, deduplicates results by `place_id`, and saves a flat Excel file with one row per POI. See `data/sample_municipalities.csv` for the expected output format.
-
-> **Note:** A Google Cloud account with the Places API enabled is required. The API is billable beyond the free tier. See [Google Places API documentation](https://developers.google.com/maps/documentation/places/web-service).
-
----
-
-## Sample Data
-
-`data/sample_municipalities.csv` contains a small anonymised sample of two municipalities with their collected POIs. Column descriptions:
-
-| Column | Description |
-|--------|-------------|
-| `municipality` | Municipality name |
-| `name` | POI name |
-| `formatted_address` | Full address |
-| `place_id` | Unique Google Place ID |
-| `latitude` / `longitude` | POI coordinates |
-| `rating` | Google user rating (0–5) |
-| `user_ratings_total` | Number of reviews |
-| `types` | Comma-separated Google Places types (e.g. `pharmacy, health, store`) |
-| `business_status` | `OPERATIONAL`, `CLOSED_TEMPORARILY`, etc. |
-| `permanently_closed` | Boolean |
+> **Note:** A Google Cloud account with the Places API enabled is required. See [Google Places API documentation](https://developers.google.com/maps/documentation/places/web-service) for setup and billing details.
 
 ---
 
 ## Service Classification
 
-Each POI is mapped to one of **8 foundational service categories** based on its Google Places `types` field:
+Each POI is assigned to one of **8 foundational service categories** based on its Google Places `types` field, following the three-domain Foundational Economy framework (Bentham et al., 2013):
 
-| FE Domain | Category | Example Google types |
-|-----------|----------|----------------------|
+| FE Domain | Category | Example Google `types` |
+|-----------|----------|------------------------|
 | **Material** | Food Access | `grocery_or_supermarket`, `bakery`, `meal_takeaway` |
 | **Material** | Transportation | `bus_station`, `train_station`, `gas_station`, `transit_station` |
 | **Material** | Bank & Postal | `bank`, `atm`, `post_office` |
@@ -111,7 +113,7 @@ Each POI is mapped to one of **8 foundational service categories** based on its 
 | **Providential** | Social Hubs | `library`, `park`, `bar`, `cafe`, `church` |
 | **Overlooked** | Cultural Necessities | `tourist_attraction`, `restaurant`, `lodging`, `museum` |
 
-POIs tagged as `point_of_interest` or `establishment` only (without a more specific type) are excluded from the FEI computation.
+POIs tagged only as `point_of_interest` or `establishment` (without a more specific type) are excluded from the FEI computation.
 
 ---
 
@@ -119,23 +121,21 @@ POIs tagged as `point_of_interest` or `establishment` only (without a more speci
 
 ### Economic Service Coverage (ESC)
 
-Measures the breadth of service types offered by a single facility $s_i$:
+Measures the breadth of service types provided by a single facility $s_i$, distinguishing between Foundational Economy (FE) and Tradeable Economy (TE) domains:
 
-$$ESC_{s_i} = \sum_{d \in \{FE, TE\}} \sum_{t_k \in d} \delta(t_k \in \text{types}_{s_i})$$
+$$ESC_{s_i} = \sum_{d \in \{FE,\ TE\}} \sum_{t_k \in d} \delta\bigl(t_k \in \text{types}_{s_i}\bigr)$$
 
-Where $\delta(\cdot) = 1$ if the service type $t_k$ is present in the POI's type list, $0$ otherwise.
+where $\delta(\cdot) = 1$ if type $t_k$ is present in the POI's type list, $0$ otherwise.
 
 ### Foundational Economy Index (FEI)
 
-Aggregates foundational service counts at the municipal level:
+Aggregates foundational service counts at the municipal level as an unweighted sum across all categories:
 
 $$FEI_i = \sum_{c \in C} S_{i,c}$$
 
-Where:
-- $C$ = set of 8 foundational service categories
-- $S_{i,c}$ = number of POIs of category $c$ in municipality $i$
+where $C$ is the set of 8 foundational service categories and $S_{i,c}$ is the number of POIs of category $c$ present in municipality $i$.
 
-### Foundational Economy Score (FES) — normalised
+### Foundational Economy Score (FES)
 
 Min-max normalisation to $[0, 1]$ for cross-municipal comparison:
 
@@ -145,7 +145,7 @@ $$FES_i = \frac{FEI_i - \min(FEI)}{\max(FEI) - \min(FEI)}$$
 
 ## Spatial Analysis
 
-Spatial autocorrelation and regression models are estimated using a **K-Nearest Neighbours spatial weights matrix** (k = 5, row-standardised).
+Spatial autocorrelation and regression models are estimated using a **K-Nearest Neighbours spatial weights matrix** (k = 5, row-standardised), chosen to account for the morphological heterogeneity of Piedmont's mountainous terrain.
 
 ```python
 from libpysal.weights import KNN
@@ -156,32 +156,30 @@ w.transform = 'r'
 moran = Moran(gdf['FEI'], w)
 ```
 
-Four models are estimated and compared:
+Four models are estimated and compared by AIC:
 
-| Model | Description |
-|-------|-------------|
+| Model | Specification |
+|-------|---------------|
 | OLS | Baseline ordinary least squares |
 | SLM | Spatial Lag Model — spatial dependence in $y$ |
 | SEM | Spatial Error Model — spatial dependence in $\varepsilon$ |
 | SDM | Spatial Durbin Model — spatial lags in both $y$ and $X$ |
 
-For SLM and SDM, **Direct, Indirect, and Total effects** are computed following LeSage & Pace (2009) using the spatial multiplier $(I - \rho W)^{-1}$.
+For SLM and SDM, **Direct, Indirect, and Total effects** are decomposed following LeSage & Pace (2009) using the spatial multiplier $(I - \rho W)^{-1}$.
 
-### Robustness check
+### Robustness check — spatial weights sensitivity
 
-Moran's I is stable across spatial weights specifications:
-
-| k | Moran's I | p-value |
-|---|-----------|---------|
-| 3 | 0.061 | 0.047 |
-| 5 | 0.060 | 0.031 |
-| 7 | 0.046 | 0.040 |
+| k | Moran's I | p-value | Disconnected components |
+|---|-----------|---------|------------------------|
+| 3 | 0.061 | 0.047 | 3 |
+| 5 | 0.060 | 0.031 | 2 |
+| 7 | 0.046 | 0.040 | 1 |
 
 ---
 
 ## Clustering
 
-Municipalities are grouped by service profile similarity using **hierarchical agglomerative clustering** with cosine similarity and Ward's linkage:
+Municipalities are grouped by service profile similarity using **hierarchical agglomerative clustering** with cosine similarity and Ward's linkage (modularity = 0.62):
 
 ```python
 from sklearn.metrics.pairwise import cosine_similarity
@@ -192,74 +190,80 @@ Z = linkage(1 - sim_matrix, method='ward')
 labels = fcluster(Z, t=20, criterion='distance')
 ```
 
-Three clusters were identified (modularity = 0.62):
-- **Cluster 1 — High Service**: diversified foundational infrastructure
-- **Cluster 2 — Intermediate**: partial provision of essential services
-- **Cluster 3 — Low Service**: structural under-provision, service deserts
+Three clusters were identified:
+
+| Cluster | Label | Description |
+|---------|-------|-------------|
+| 1 | **High Service** | Diversified foundational infrastructure |
+| 2 | **Intermediate** | Partial provision of essential services |
+| 3 | **Low Service** | Structural under-provision; service deserts |
 
 ---
 
 ## Validation
 
-Google Maps POI counts are validated against official ASIA register data (ISTAT):
+Google Maps POI counts are validated against the official ISTAT ASIA register of active firms:
 
 - **Spearman's ρ = 0.81** (p < 0.001) — strong monotonic correlation
-- **R² = 0.64** on log-log regression — 64% of variance in registered firms explained by Google POI counts
+- **R² = 0.64** on log-log regression
 
 ---
 
-## Dependencies
+## Data Sources
 
-```
-requests
-pandas
-openpyxl
-tqdm
-geopandas
-libpysal
-esda
-spreg
-scikit-learn
-scipy
-matplotlib
-shapely
-```
+| Dimension | Variables | Source | Year |
+|-----------|-----------|--------|------|
+| Geography | Altimetric zone, forest cover | ISTAT, MIPAAF | 2020–2022 |
+| Demography | Population, population change, foreign residents | ISTAT | 2011–2022 |
+| Economy | Active firms, employees by sector, unemployment | ISTAT ASIA Register | 2020–2022 |
+| Territory | SNAI classification (D → F) | SNAI | 2021–2027 |
+| Services | Geolocated POIs | Google Maps Places API | 2023–2024 |
 
 ---
 
-## How to Replicate
+## Tech Stack
 
-1. **Prepare your municipality list** with coordinates and SNAI classification
-2. **Run the data collector** to gather POIs via Google Maps API
-3. **Classify POIs** into the 8 foundational service categories
-4. **Compute FEI and FES** for each municipality
-5. **Run spatial regressions** (OLS → SLM → SEM → SDM)
-6. **Cluster municipalities** by service profile
-
-Each step corresponds to a script in the `analysis/` folder.
+| Tool | Purpose |
+|------|---------|
+| Python 3.8+ | Data analysis and scripting |
+| `requests` / `pandas` | API data collection and processing |
+| `geopandas` | Geospatial data manipulation |
+| `libpysal` / `esda` / `spreg` | Spatial weights, Moran's I, spatial regression |
+| `scikit-learn` / `scipy` | Cosine similarity, hierarchical clustering |
+| `matplotlib` | Figures and diagnostics |
+| QGIS | Cartographic processing and map production |
 
 ---
 
 ## Citation
 
-If you use this methodology or data, please cite:
+```bibtex
+@article{varavallo_barbera_diclemente_underreview,
+  author  = {Varavallo, Giuseppe and Barbera, Filippo and Di Clemente, Riccardo},
+  title   = {Revitalizing Marginal Areas: A Foundational Economy Approach},
+  journal = {Statistics and Economics for Policymakers Studies},
+  year    = {under review},
+  note    = {Manuscript SEPS-D-25-03080}
+}
+```
 
-```
-Varavallo, G., Barbera, F., Di Clemente, R. (under review).
-Revitalizing Marginal Areas: A Foundational Economy Approach.
-Statistics and Economics for Policymakers Studies.
-```
+---
+
+## Authors
+
+**Giuseppe Varavallo** — Department of Cultures, Politics and Society & Department of Economics and Statistics "Cognetti de Martiis", University of Turin
+✉ giuseppe.varavallo@unito.it
+
+**Filippo Barbera** — Department of Cultures, Politics and Society, University of Turin & Collegio Carlo Alberto
+✉ filippo.barbera@unito.it
+
+**Riccardo Di Clemente** — Northeastern University London, Complex Connections Lab & ISI Foundation, Turin
+✉ r.diclemente@northeastern.ac.uk
 
 ---
 
 ## License
 
-Data collected via Google Maps API is subject to [Google Maps Platform Terms of Service](https://cloud.google.com/maps-platform/terms). The sample data provided in this repository is anonymised and shared for reproducibility purposes only.
-
-Code is released under the MIT License.
-
----
-
-## Contact
-
-For questions about the methodology, open an issue or contact the corresponding author at filippo.barbera@unito.it
+Code: [MIT License](LICENSE).
+Data and figures: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+POI data collected via Google Maps API is subject to [Google Maps Platform Terms of Service](https://cloud.google.com/maps-platform/terms) and is shared here for reproducibility purposes only.
