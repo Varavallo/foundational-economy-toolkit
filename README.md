@@ -11,11 +11,11 @@
 
 ## Overview
 
-This repository provides the methodology, sample data, and analytical code behind the **Foundational Economy Index (FEI)** — a data-driven framework to map and assess the availability of essential services in marginal territories.
+This repository provides the methodology, sample data, and analytical code behind the **Foundational Economy Index (FEI)** - a data-driven framework to map and assess the availability of essential services in marginal territories.
 
 > **Varavallo, G., Barbera, F., Di Clemente, R. (under review).**
 > *Revitalizing Marginal Areas: A Foundational Economy Approach.*
-> Statistics and Economics for Policymakers Studies (SEPS).
+
 
 The FEI captures the territorial distribution and density of foundational services — healthcare, education, food access, transport, civic infrastructure, and more — using geolocated Points of Interest (POIs) collected via the **Google Maps Places API** as a dynamic, scalable proxy for physical infrastructure.
 
