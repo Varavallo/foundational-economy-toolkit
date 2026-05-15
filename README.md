@@ -29,13 +29,13 @@ The framework was developed and tested on **372 marginal municipalities in the P
 
 ![SNAI Classification — Italy](figures/inner_areas_classification_maps_rev2.svg)
 
-*Italian municipalities by SNAI inner areas classification (2021–2027). Source: SNAI (2021–2027) — elaboration by Varavallo, Barbera & Di Clemente.*
+*Italian municipalities by SNAI inner areas classification (2021–2027). Source: SNAI (2021–2027) — elaboration by Varavallo, G.*
 
 ---
 
 ![SNAI Classification — Piedmont](figures/region_inner_areas_classification_maps.svg)
 
-*Spatial distribution of the 372 marginal municipalities in the Piedmont region selected for analysis (SNAI classes D, E, F). Source: SNAI (2021–2027), ISTAT (2022) — elaboration by Varavallo, Barbera & Di Clemente.*
+*Spatial distribution of the 372 marginal municipalities in the Piedmont region selected for analysis (SNAI classes D, E, F). Source: SNAI (2021–2027), ISTAT (2022) — elaboration by Varavallo,G.*
 
 ---
 
@@ -51,11 +51,6 @@ Foundational-Economy-Toolkit/
 │
 ├── collection/
 │   └── google_places_collector.py       # Google Maps Places API data collector
-│
-├── analysis/
-│   ├── fei_computation.py               # FEI and FES calculation
-│   ├── spatial_regression.py            # OLS + SLM + SEM + SDM + marginal effects
-│   └── clustering.py                    # Cosine similarity + hierarchical clustering
 │
 └── figures/
     ├── inner_areas_classification_maps_rev2.svg
@@ -143,39 +138,6 @@ $$FES_i = \frac{FEI_i - \min(FEI)}{\max(FEI) - \min(FEI)}$$
 
 ---
 
-## Spatial Analysis
-
-Spatial autocorrelation and regression models are estimated using a **K-Nearest Neighbours spatial weights matrix** (k = 5, row-standardised), chosen to account for the morphological heterogeneity of Piedmont's mountainous terrain.
-
-```python
-from libpysal.weights import KNN
-from esda.moran import Moran
-
-w = KNN.from_dataframe(gdf, k=5)
-w.transform = 'r'
-moran = Moran(gdf['FEI'], w)
-```
-
-Four models are estimated and compared by AIC:
-
-| Model | Specification |
-|-------|---------------|
-| OLS | Baseline ordinary least squares |
-| SLM | Spatial Lag Model — spatial dependence in $y$ |
-| SEM | Spatial Error Model — spatial dependence in $\varepsilon$ |
-| SDM | Spatial Durbin Model — spatial lags in both $y$ and $X$ |
-
-For SLM and SDM, **Direct, Indirect, and Total effects** are decomposed following LeSage & Pace (2009) using the spatial multiplier $(I - \rho W)^{-1}$.
-
-### Robustness check — spatial weights sensitivity
-
-| k | Moran's I | p-value | Disconnected components |
-|---|-----------|---------|------------------------|
-| 3 | 0.061 | 0.047 | 3 |
-| 5 | 0.060 | 0.031 | 2 |
-| 7 | 0.046 | 0.040 | 1 |
-
----
 
 ## Clustering
 
