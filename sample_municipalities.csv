@@ -1,0 +1,87 @@
+municipality,latitude,longitude,rating,user_ratings_total,types,business_status
+Municipality_A,45.1332,8.2514,4.7,47,"lodging, point_of_interest, establishment",OPERATIONAL
+Municipality_A,45.0942,8.2757,4.6,2118,"church, tourist_attraction, park, place_of_worship, point_of_interest, establishment",OPERATIONAL
+Municipality_A,45.1326,8.2506,4.8,99,"lodging, point_of_interest, establishment",OPERATIONAL
+Municipality_A,45.1608,8.2813,4.7,10,"lodging, point_of_interest, establishment",OPERATIONAL
+Municipality_A,45.1509,8.2539,4.8,51,"lodging, point_of_interest, establishment",OPERATIONAL
+Municipality_A,45.1318,8.3081,4.7,29,"liquor_store, food, point_of_interest, store, establishment",OPERATIONAL
+Municipality_A,45.1561,8.2631,3.5,2,"lodging, point_of_interest, establishment",OPERATIONAL
+Municipality_A,45.1021,8.2766,4.3,3,"lodging, point_of_interest, establishment",OPERATIONAL
+Municipality_A,45.1586,8.2724,4.5,984,"spa, lodging, restaurant, food, point_of_interest, establishment",OPERATIONAL
+Municipality_A,45.1681,8.2537,No rating available,0,"lodging, point_of_interest, establishment",OPERATIONAL
+Municipality_A,45.1401,8.2463,4.8,10,"lodging, point_of_interest, establishment",OPERATIONAL
+Municipality_A,45.1443,8.278,5,3,"food, point_of_interest, establishment",OPERATIONAL
+Municipality_A,45.151,8.296,4.6,202,"restaurant, food, point_of_interest, establishment",OPERATIONAL
+Municipality_A,45.1309,8.2818,4.8,4,"city_hall, local_government_office, point_of_interest, establishment",OPERATIONAL
+Municipality_A,45.1169,8.26,4,1,"funeral_home, point_of_interest, establishment",OPERATIONAL
+Municipality_A,45.1191,8.2475,4.6,17,"furniture_store, home_goods_store, store, point_of_interest, establishment",OPERATIONAL
+Municipality_A,45.1194,8.2515,4.7,38,"furniture_store, home_goods_store, store, point_of_interest, establishment",OPERATIONAL
+Municipality_A,45.1306,8.2812,3,1,"post_office, finance, point_of_interest, establishment",OPERATIONAL
+Municipality_A,45.1281,8.2856,4.4,106,"cafe, bar, store, restaurant, food, point_of_interest, establishment",OPERATIONAL
+Municipality_A,45.1415,8.2758,4.6,108,"restaurant, food, point_of_interest, establishment",OPERATIONAL
+Municipality_A,45.1445,8.2782,No rating available,0,"food, point_of_interest, establishment",OPERATIONAL
+Municipality_A,45.1188,8.2392,4.4,10,"store, point_of_interest, establishment",OPERATIONAL
+Municipality_A,45.1166,8.261,4.5,61,"gas_station, pharmacy, bar, health, store, restaurant, food, point_of_interest, establishment",OPERATIONAL
+Municipality_A,45.1556,8.2592,4.7,19,"lodging, point_of_interest, establishment",OPERATIONAL
+Municipality_A,45.151,8.2958,No rating available,0,"travel_agency, point_of_interest, establishment",OPERATIONAL
+Municipality_A,45.1065,8.3049,5,12,"car_repair, point_of_interest, establishment",OPERATIONAL
+Municipality_A,45.1138,8.315,4.3,65,"general_contractor, car_repair, store, food, point_of_interest, establishment",OPERATIONAL
+Municipality_A,45.1195,8.2521,5,1,"general_contractor, point_of_interest, establishment",OPERATIONAL
+Municipality_A,45.1038,8.3084,5,1,"school, point_of_interest, establishment",OPERATIONAL
+Municipality_A,45.1183,8.2479,3,2,"bank, atm, finance, point_of_interest, establishment",OPERATIONAL
+Municipality_A,45.1203,8.2436,4,1,"general_contractor, point_of_interest, establishment",OPERATIONAL
+Municipality_A,45.1066,8.3046,4.9,14,"car_repair, point_of_interest, establishment",OPERATIONAL
+Municipality_A,45.1569,8.2937,2.5,2,"liquor_store, store, point_of_interest, establishment",OPERATIONAL
+Municipality_A,45.1009,8.2815,4.8,5,"city_hall, local_government_office, point_of_interest, establishment",OPERATIONAL
+Municipality_A,45.1585,8.2828,4.5,329,"lodging, point_of_interest, establishment",OPERATIONAL
+Municipality_A,45.1027,8.3071,4.5,2,"electrician, point_of_interest, establishment",OPERATIONAL
+Municipality_A,45.1047,8.3076,4.8,12,"bakery, store, food, point_of_interest, establishment",OPERATIONAL
+Municipality_A,45.1329,8.2393,5,2,"plumber, point_of_interest, establishment",OPERATIONAL
+Municipality_A,45.1186,8.2388,4.6,29,"car_repair, point_of_interest, establishment",OPERATIONAL
+Municipality_A,45.162,8.2877,No rating available,0,"post_office, finance, point_of_interest, establishment",OPERATIONAL
+Municipality_A,45.1035,8.3179,4.4,172,"bicycle_store, store, point_of_interest, establishment",OPERATIONAL
+Municipality_A,45.1433,8.332,4.9,20,"pharmacy, health, store, point_of_interest, establishment",OPERATIONAL
+Municipality_A,45.1433,8.3314,5,6,"pharmacy, health, store, point_of_interest, establishment",OPERATIONAL
+Municipality_A,45.1436,8.3325,No rating available,0,"finance, point_of_interest, establishment",OPERATIONAL
+Municipality_A,45.1443,8.3353,No rating available,0,"school, point_of_interest, establishment",OPERATIONAL
+Municipality_A,45.1579,8.2445,3,1,"lodging, point_of_interest, establishment",OPERATIONAL
+Municipality_B,44.3675,6.986,4.8,33,"lodging, point_of_interest, establishment",OPERATIONAL
+Municipality_B,44.3811,6.9674,4.9,12,"store, point_of_interest, establishment",OPERATIONAL
+Municipality_B,44.3586,6.9549,4.5,267,"lodging, point_of_interest, establishment",OPERATIONAL
+Municipality_B,44.3688,6.9836,No rating available,0,"transit_station, point_of_interest, establishment",OPERATIONAL
+Municipality_B,44.3799,6.9693,4.1,7,"church, place_of_worship, point_of_interest, establishment",OPERATIONAL
+Municipality_B,44.3796,6.9694,5,2,"post_office, finance, point_of_interest, establishment",OPERATIONAL
+Municipality_B,44.3795,6.9694,No rating available,0,"finance, point_of_interest, establishment",OPERATIONAL
+Municipality_B,44.3809,6.9695,No rating available,0,"lodging, point_of_interest, establishment",OPERATIONAL
+Municipality_B,44.3809,6.9695,No rating available,0,"lodging, point_of_interest, establishment",OPERATIONAL
+Municipality_B,44.3795,6.9693,4.2,10,"city_hall, local_government_office, point_of_interest, establishment",OPERATIONAL
+Municipality_B,44.3794,6.9696,4.6,299,"restaurant, point_of_interest, food, establishment",OPERATIONAL
+Municipality_B,44.3801,6.9687,5,1,"lodging, point_of_interest, establishment",OPERATIONAL
+Municipality_B,44.3799,6.9687,5,14,"bar, point_of_interest, establishment",OPERATIONAL
+Municipality_B,44.38,6.9687,4.6,18,"point_of_interest, store, establishment",OPERATIONAL
+Municipality_B,44.3795,6.969,4.3,3,"bus_station, transit_station, point_of_interest, establishment",OPERATIONAL
+Municipality_B,44.3791,6.9695,No rating available,0,"lodging, point_of_interest, establishment",OPERATIONAL
+Municipality_B,44.3793,6.969,4.6,5,"transit_station, point_of_interest, establishment",OPERATIONAL
+Municipality_B,44.3793,6.9689,4,1,"parking, point_of_interest, establishment",OPERATIONAL
+Municipality_B,44.3787,6.9699,5,1,"lodging, point_of_interest, establishment",OPERATIONAL
+Municipality_B,44.3807,6.9679,4.4,127,"bakery, point_of_interest, food, store, establishment",OPERATIONAL
+Municipality_B,44.3795,6.9724,5,2,"church, place_of_worship, point_of_interest, establishment",OPERATIONAL
+Municipality_B,44.3811,6.9675,5,4,"clothing_store, point_of_interest, store, establishment",OPERATIONAL
+Municipality_B,44.3814,6.9677,No rating available,0,"liquor_store, point_of_interest, store, establishment",OPERATIONAL
+Municipality_B,44.3814,6.9676,4.5,126,"grocery_or_supermarket, supermarket, point_of_interest, food, store, establishment",OPERATIONAL
+Municipality_B,44.381,6.967,5,1,"parking, point_of_interest, establishment",OPERATIONAL
+Municipality_B,44.3828,6.9729,4.5,4,"tourist_attraction, point_of_interest, establishment",OPERATIONAL
+Municipality_B,44.3822,6.9658,4,74,"campground, lodging, point_of_interest, establishment",OPERATIONAL
+Municipality_B,44.385,6.9648,5,1,"transit_station, point_of_interest, establishment",OPERATIONAL
+Municipality_B,44.3852,6.9648,No rating available,0,"transit_station, point_of_interest, establishment",OPERATIONAL
+Municipality_B,44.3747,6.9747,No rating available,0,"church, place_of_worship, point_of_interest, establishment",OPERATIONAL
+Municipality_B,44.3851,6.9642,4.2,70,"rv_park, lodging, point_of_interest, establishment",OPERATIONAL
+Municipality_B,44.386,6.9637,4.2,147,"restaurant, food, point_of_interest, establishment",OPERATIONAL
+Municipality_B,44.3867,6.9626,5,1,"park, point_of_interest, establishment",OPERATIONAL
+Municipality_B,44.3718,6.9765,No rating available,0,"lodging, point_of_interest, establishment",OPERATIONAL
+Municipality_B,44.3711,6.9799,No rating available,0,"lodging, point_of_interest, establishment",OPERATIONAL
+Municipality_B,44.3698,6.9816,No rating available,0,"lodging, point_of_interest, establishment",OPERATIONAL
+Municipality_B,44.3698,6.9817,3.5,2,"lodging, point_of_interest, establishment",OPERATIONAL
+Municipality_B,44.3691,6.9832,No rating available,0,"bus_station, transit_station, point_of_interest, establishment",OPERATIONAL
+Municipality_B,44.3685,6.9835,4.2,84,"lodging, point_of_interest, establishment",OPERATIONAL
+Municipality_B,44.3686,6.984,No rating available,0,"transit_station, point_of_interest, establishment",OPERATIONAL
