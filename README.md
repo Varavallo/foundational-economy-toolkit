@@ -17,7 +17,7 @@ This repository provides the methodology, sample data, and analytical code behin
 > *Revitalizing Marginal Areas: A Foundational Economy Approach.*
 
 
-The FEI captures the territorial distribution and density of foundational services — healthcare, education, food access, transport, civic infrastructure, and more — using geolocated Points of Interest (POIs) collected via the **Google Maps Places API** as a dynamic, scalable proxy for physical infrastructure.
+The FEI captures the territorial distribution and density of foundational services: healthcare, education, food access, transport, civic infrastructure, and more, using geolocated Points of Interest (POIs) collected via the **Google Maps Places API** as a dynamic, scalable proxy for physical infrastructure.
 
 The framework was developed and tested on **372 marginal municipalities in the Piedmont region (Italy)**, classified as intermediate, peripheral, or ultra-peripheral under the National Strategy for Inner Areas (SNAI, 2021–2027). The analytical pipeline is designed to be **replicable in any territorial context** where Google Maps API coverage is available.
 
