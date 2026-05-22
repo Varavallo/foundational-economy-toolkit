@@ -185,7 +185,7 @@ Google Maps POI counts are validated against the official ISTAT ASIA register of
 @article{varavallo_barbera_diclemente_underreview,
   author  = {Varavallo, Giuseppe and Barbera, Filippo and Di Clemente, Riccardo},
   title   = {Revitalizing Marginal Areas: A Foundational Economy Approach},
-  journal = {Statistics and Economics for Policymakers Studies},
+  journal = {Socio-Economic Planning},
   year    = {under review},
   note    = {Manuscript SEPS-D-25-03080}
 }
