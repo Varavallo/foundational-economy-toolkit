@@ -77,7 +77,7 @@ python collection/google_places_collector.py
 
 ## Service Classification
 
-Each POI is assigned to one of **8 foundational service categories** based on its Google Places `types` field, following the three-domain Foundational Economy framework (Bentham et al., 2013):
+Each POI is assigned to one of **3 foundational service categories** based on its Google Places `types` field, following the three-domain Foundational Economy framework (Bentham et al., 2013):
 
 | FE Domain | Category | Example Google `types` |
 |-----------|----------|------------------------|
