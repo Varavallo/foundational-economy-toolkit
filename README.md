@@ -82,12 +82,12 @@ Each POI is assigned to one of **3 foundational service categories** based on it
 | FE Domain | Category | Example Google `types` |
 |-----------|----------|------------------------|
 | **Material** | Food Access | `grocery_or_supermarket`, `bakery`, `meal_takeaway` |
-| **Material** | Transportation | `bus_station`, `train_station`, `gas_station`, `transit_station` |
-| **Material** | Bank & Postal | `bank`, `atm`, `post_office` |
+| | Transportation | `bus_station`, `train_station`, `gas_station`, `transit_station` |
+| | Bank & Postal | `bank`, `atm`, `post_office` |
 | **Providential** | Health & Medicine | `hospital`, `pharmacy`, `doctor`, `dentist` |
-| **Providential** | Education | `school`, `primary_school`, `secondary_school`, `university` |
-| **Providential** | Civic Infrastructure | `city_hall`, `local_government_office`, `police`, `fire_station` |
-| **Providential** | Social Hubs | `library`, `park`, `bar`, `cafe`, `church` |
+| | Education | `school`, `primary_school`, `secondary_school`, `university` |
+| | Civic Infrastructure | `city_hall`, `local_government_office`, `police`, `fire_station` |
+| | Social Hubs | `library`, `park`, `bar`, `cafe`, `church` |
 | **Overlooked** | Cultural Necessities | `tourist_attraction`, `restaurant`, `lodging`, `museum` |
 
 POIs tagged only as `point_of_interest` or `establishment` (without a more specific type) are excluded from the FEI computation.
