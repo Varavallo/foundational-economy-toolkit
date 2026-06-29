@@ -179,6 +179,9 @@ Google Maps POI counts are validated against the official ISTAT ASIA register of
 
 ---
 
+## Interactive results
+Interactive results can be explored on the dedicated project website https://www.riccardodiclemente.com/projects/marginal_areas.html
+
 ## Citation
 
 ```bibtex
